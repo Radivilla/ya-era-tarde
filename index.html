@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>YA ERA TARDE</title>
+  <meta name="description" content="Movimiento de Atención Primaria en la Salud. Prevención del embarazo adolescente con educación, comunidad y decisiones informadas."/>
+  <meta name="theme-color" content="#5B5FFF"/>
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card: rgba(255,255,255,.10);
+      --card2: rgba(255,255,255,.07);
+      --line: rgba(255,255,255,.14);
+      --text:#ffffff;
+      --muted: rgba(255,255,255,.78);
+      --muted2: rgba(255,255,255,.62);
+
+      --a1:#5B5FFF; /* azul-violeta */
+      --a2:#FF4D8D; /* rosa */
+      --a3:#22C55E; /* verde */
+      --a4:#FFD166; /* amarillo suave */
+      --max: 980px;
+      --r: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 18% 10%, rgba(91,95,255,.25), transparent 60%),
+        radial-gradient(900px 520px at 82% 18%, rgba(255,77,141,.22), transparent 62%),
+        radial-gradient(900px 540px at 50% 92%, rgba(34,197,94,.18), transparent 60%),
+        linear-gradient(180deg, #070a14 0%, var(--bg) 100%);
+    }
+    a{color:var(--text)}
+    .center{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 18px;
+      text-align:center;
+    }
+
+    /* Top bar */
+    .top{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,20,.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .top .center{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; text-align:left;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .brand small{
+      color:var(--muted2);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:700;
+      font-size:12px;
+    }
+    .brand strong{font-size:14px}
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:8px 10px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .pill:hover{color:var(--text); border-color: rgba(255,255,255,.28)}
+
+    /* Hero */
+    .hero{
+      padding: 48px 18px 26px;
+    }
+    .heroCard{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 34px 18px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--r) + 8px);
+      background:
+        linear-gradient(135deg, rgba(91,95,255,.18), rgba(255,77,141,.12)),
+        rgba(255,255,255,.03);
+      overflow:hidden;
+      position:relative;
+      text-align:center;
+    }
+    .heroCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 260px at 20% 0%, rgba(255,209,102,.22), transparent 60%),
+        radial-gradient(520px 260px at 80% 10%, rgba(34,197,94,.18), transparent 62%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .heroInner{position:relative; z-index:2}
+    .kicker{
+      display:inline-flex;
+      gap:10px; align-items:center;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight:700;
+      letter-spacing:.02em;
+      font-size:13px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--a1), var(--a2));
+      box-shadow: 0 0 0 4px rgba(255,255,255,.06);
+    }
+    h1{
+      margin:18px 0 10px;
+      font-size: clamp(44px, 6.8vw, 78px);
+      letter-spacing:-.03em;
+      line-height: .95;
+    }
+    .lead{
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 70ch;
+    }
+    .heroImg{
+      margin: 22px auto 0;
+      max-width: 920px;
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .heroImg img{
+      width:100%; height: 320px; object-fit: cover;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    @media(max-width:700px){
+      .heroImg img{height: 240px}
+    }
+
+    /* Sections */
+    .section{padding: 22px 18px 40px}
+    .card{
+      max-width:var(--max);
+      margin: 0 auto;
+      padding: 22px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      background: rgba(255,255,255,.05);
+      text-align:center;
+    }
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 26px;
+      letter-spacing:-.01em;
+    }
+    .card p{
+      margin: 10px auto 0;
+      max-width: 72ch;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15.5px;
+    }
+
+    .grid{
+      max-width:var(--max);
+      margin: 18px auto 0;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media(max-width:860px){
+      .grid{grid-template-columns: 1fr}
+    }
+    .mini{
+      padding: 18px 16px;
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background: rgba(255,255,255,.04);
+      text-align:left;
+    }
+    .mini h3{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: var(--muted2);
+    }
+    .mini p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.65;
+      font-size:15px;
+    }
+    .tags{
+      margin-top: 12px;
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+    }
+    .tag{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight:700;
+    }
+
+    /* Media */
+    .mediaRow{
+      max-width:var(--max);
+      margin: 18px auto 0;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items:start;
+    }
+    @media(max-width:900px){
+      .mediaRow{grid-template-columns:1fr}
+    }
+    .mediaCard{
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background: rgba(255,255,255,.05);
+      padding: 18px 16px;
+      text-align:left;
+    }
+    .mediaCard h3{
+      margin:0 0 10px;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color: var(--muted2);
+    }
+    audio{width:100%}
+    .hint{
+      margin-top:10px;
+      color: var(--muted2);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .videoBox{
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.35);
+      aspect-ratio: 16 / 9;
+      width:100%;
+    }
+    .videoBox iframe, .videoBox video{
+      width:100%; height:100%;
+      border:0;
+      display:block;
+    }
+
+    /* Testimonials */
+    .testimonials{
+      max-width:var(--max);
+      margin: 18px auto 0;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      text-align:left;
+    }
+    @media(max-width:980px){.testimonials{grid-template-columns:1fr}}
+    blockquote{
+      margin:0;
+      padding:16px 14px;
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background: rgba(255,255,255,.04);
+    }
+    blockquote p{
+      margin:0 0 10px;
+      color: var(--text);
+      line-height:1.55;
+      font-size:15px;
+    }
+    blockquote footer{
+      margin:0;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    /* Footer */
+    .footer{
+      padding: 26px 18px 36px;
+      border-top:1px solid var(--line);
+      color: var(--muted2);
+    }
+    .footer .center{max-width:var(--max); text-align:center}
+    .small{font-size:13px; color: var(--muted2)}
+  </style>
+</head>
+
+<body>
+
+<!-- Top -->
+<div class="top">
+  <div class="center">
+    <div class="brand">
+      <small>Movimiento APS</small>
+      <strong>YA ERA TARDE</strong>
+    </div>
+    <nav>
+      <a class="pill" href="#mensaje">Mensaje</a>
+      <a class="pill" href="#recursos">Recursos</a>
+      <a class="pill" href="#audios">Audios</a>
+      <a class="pill" href="#videos">Videos</a>
+      <a class="pill" href="#voces">Voces</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="heroCard">
+    <div class="heroInner">
+      <div class="kicker"><span class="dot"></span> Prevención • Educación • Comunidad</div>
+      <h1>YA ERA TARDE.</h1>
+      <p class="lead">
+        La prevención del embarazo adolescente no empieza cuando el problema ya se ve.
+        Empieza antes, cuando la información todavía puede cambiar el rumbo.
+      </p>
+
+      <!-- Imagen principal: cambia img/hero.jpg -->
+      <div class="heroImg">
+        <img src="img/hero.jpg" alt="Imagen principal del movimiento (jóvenes/comunidad)"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mensaje -->
+<section class="section" id="mensaje">
+  <div class="card">
+    <h2>Un mensaje claro, sin culpa</h2>
+    <p>
+      No moralizamos. No señalamos. No reducimos el problema a una sola causa.
+      Esto es Atención Primaria en la Salud: educar a tiempo para que la decisión exista.
+    </p>
+
+    <div class="grid">
+      <div class="mini">
+        <h3>Ruptura</h3>
+        <p>Primero te detiene. Porque la conciencia empieza cuando algo te incomoda.</p>
+      </div>
+      <div class="mini">
+        <h3>Revelación</h3>
+        <p>Después te muestra lo invisible: lo que ocurre antes de que exista urgencia.</p>
+      </div>
+      <div class="mini">
+        <h3>Orientación</h3>
+        <p>Finalmente te da una salida: educación integral y acceso a información confiable.</p>
+      </div>
+      <div class="mini">
+        <h3>Movimiento</h3>
+        <p>Un mismo mensaje viaja por web, audio, video y comunidad.</p>
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Prevención primaria</span>
+      <span class="tag">Educación para la salud</span>
+      <span class="tag">Alfabetización en salud</span>
+      <span class="tag">Enfoque comunitario</span>
+    </div>
+  </div>
+</section>
+
+<!-- Recursos (imágenes + descargables futuro) -->
+<section class="section" id="recursos">
+  <div class="card">
+    <h2>Recursos visuales</h2>
+    <p>
+      Infografías, carteles y material descargable
+    </p>
+
+    <div class="grid" style="margin-top:18px;">
+      <div class="mini" style="text-align:center;">
+        <img src="img/story.jpg" alt="Recurso 1" style="border-radius:14px; border:1px solid var(--line);"/>
+        <p class="hint">img 1</p>
+      </div>
+      <div class="mini" style="text-align:center;">
+        <img src="img/hope.jpg" alt="Recurso 2" style="border-radius:14px; border:1px solid var(--line);"/>
+        <p class="hint">img2</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Audios -->
+<section class="section" id="audios">
+  <div class="card">
+    <h2>Audios</h2>
+    <p>
+     audios cortos (2–5 min).
+    </p>
+
+    <div class="mediaRow">
+      <div class="mediaCard">
+        <h3>Cápsula 1</h3>
+        <!-- Subir archivo: coloca el mp3 en /media/ y cambia la ruta -->
+        <audio controls preload="none">
+          <source src="media/capsula-1.mp3" type="audio/mpeg"/>
+          Tu navegador no soporta audio.
+        </audio>
+        <div class="hint">
+          <!--Para subir: guarda tu MP3 en <strong>/media/</strong> y nómbralo <strong>capsula-1.mp3</strong>.-->
+        </div>
+      </div>
+
+      <div class="mediaCard">
+        <h3>Cápsula 2</h3>
+        <audio controls preload="none">
+          <source src="media/capsula-2.mp3" type="audio/mpeg"/>
+        </audio>
+        <div class="hint">Tip: 1 idea por audio. Cierre con una sola frase memorable.</div>
+      </div>
+    </div>
+
+    <div class="mediaCard" style="max-width:var(--max); margin:14px auto 0; text-align:left;">
+      <h3>Spotify (opcional)</h3>
+      <p class="hint" style="margin:0;">
+        <!-- Si ya tienen Spotify, peguen aquí el iframe del episodio (cuando lo tengan).-->
+      </p>
+      <!-- Pega aquí el iframe de Spotify cuando exista -->
+      <!--
+      <div class="videoBox" style="aspect-ratio: 16/5;">
+        <iframe src="https://open.spotify.com/embed/episode/XXXX" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
+      -->
+    </div>
+  </div>
+</section>
+
+<!-- Videos -->
+<section class="section" id="videos">
+  <div class="card">
+    <h2>Videos</h2>
+    <p>
+      Videosss
+    </p>
+
+    <div class="mediaRow">
+      <div class="mediaCard">
+        <h3>Video principal (YouTube)</h3>
+        <div class="videoBox">
+          <!-- Cambia el ID del video: https://www.youtube.com/watch?v=VIDEO_ID -->
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID"
+            title="Video principal"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="hint">Quita ID</div>
+      </div>
+
+      <div class="mediaCard">
+        <h3>Video MP4 (subido a tu hosting)</h3>
+        <div class="videoBox">
+          <!-- Subir archivo: coloca el mp4 en /media/ y cambia la ruta -->
+          <video controls preload="none">
+            <source src="media/video-principal.mp4" type="video/mp4"/>
+            Tu navegador no soporta video.
+          </video>
+        </div>
+        <div class="hint">
+          opcional <strong>/media/video-principal.mp4</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="section" id="voces">
+  <div class="card">
+    <h2>Voces (testimonios)</h2>
+    <p>
+      Testimonios
+    </p>
+
+    <div class="testimonials">
+      <blockquote>
+        <p>“Nunca nadie me explicó esto a tiempo. Siempre llegaba después.”</p>
+        <footer>— Testimonio anónimo</footer>
+      </blockquote>
+      <blockquote>
+        <p>“No es que no quisiera decidir… es que no sabía ni qué preguntar.”</p>
+        <footer>— Testimonio anónimo</footer>
+      </blockquote>
+      <blockquote>
+        <p>“Cuando entendí, ya era tarde. Ojalá alguien lo hubiera dicho antes.”</p>
+        <footer>— Testimonio anónimo</footer>
+      </blockquote>
+    </div>
+
+    <p class="hint" style="max-width:var(--max); margin:16px auto 0; text-align:left;">
+      Representativos.
+    </p>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="center">
+    <div class="small">
+      Nota ética: sitio educativo. No sustituye orientación médica. Promueve prevención primaria, educación integral y acceso a servicios.
+    </div>
+    <div class="small" style="margin-top:10px;">
+      © <span id="year"></span> YA ERA TARDE
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
