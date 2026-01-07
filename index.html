@@ -305,8 +305,70 @@
     }
     .footer .center{max-width:var(--max); text-align:center}
     .small{font-size:13px; color: var(--muted2)}
+
+
+
+    .social-fab{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: grid;
+  gap: 10px;
+  align-items: end;
+}
+
+.social-fab__btn{
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.social-fab__menu{
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all .18s ease;
+}
+
+.social-fab.is-open .social-fab__menu{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.social-fab__item{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.10);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+}
+
+.social-fab__item svg{
+  width: 22px;
+  height: 22px;
+}
   </style>
 </head>
+
+
+
 
 <body>
 
@@ -393,12 +455,12 @@
 
     <div class="grid" style="margin-top:18px;">
       <div class="mini" style="text-align:center;">
-        <img src="img/story.jpg" alt="Recurso 1" style="border-radius:14px; border:1px solid var(--line);"/>
-        <p class="hint">img 1</p>
+        <img src="img/story.jpg" alt="Recurso 1"
+  style="width:100%; height:auto; border-radius:14px; border:1px solid var(--line);" />
       </div>
       <div class="mini" style="text-align:center;">
-        <img src="img/hope.jpg" alt="Recurso 2" style="border-radius:14px; border:1px solid var(--line);"/>
-        <p class="hint">img2</p>
+        <img src="img/hope.jpg" alt="Recurso 2"
+  style="width:100%; height:auto; border-radius:14px; border:1px solid var(--line);" />
       </div>
     </div>
   </div>
@@ -408,9 +470,6 @@
 <section class="section" id="audios">
   <div class="card">
     <h2>Audios</h2>
-    <p>
-     audios cortos (2–5 min).
-    </p>
 
     <div class="mediaRow">
       <div class="mediaCard">
@@ -430,54 +489,22 @@
         <audio controls preload="none">
           <source src="media/capsula-2.mp3" type="audio/mpeg"/>
         </audio>
-        <div class="hint">T</div>
       </div>
     </div>
 
-    <div class="mediaCard" style="max-width:var(--max); margin:14px auto 0; text-align:left;">
-      <h3>Spotify</h3>
-      <p class="hint" style="margin:0;">
-        <!-- Si ya tienen Spotify, peguen aquí el iframe del episodio (cuando lo tengan).-->
-      </p>
-      <!-- Pega aquí el iframe de Spotify cuando exista -->
-      <!--
-      <div class="videoBox" style="aspect-ratio: 16/5;">
-        <iframe src="https://open.spotify.com/embed/episode/XXXX" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-      </div>
-      -->
-    </div>
   </div>
 </section>
 
 <!-- Videos -->
 <section class="section" id="videos">
   <div class="card">
-    <h2>Videos</h2>
-    <p>
-      Videosss
-    </p>
-
-    <div class="mediaRow">
-      <div class="mediaCard">
-        <h3>Video principal (YouTube)</h3>
-        <div class="videoBox">
-          <!-- Cambia el ID del video: https://www.youtube.com/watch?v=1lCrORDuH-A -->
-          <iframe
-            src="https://www.youtube.com/watch?v=1lCrORDuH-A "
-            title="Video principal"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="hint">Quita ID</div>
-      </div>
-
+    <h2>Video</h2>
       <div class="mediaCard">
         <h3>Video MP4 </h3>
         <div class="videoBox">
           <!-- Subir archivo: coloca el mp4 en /media/ y cambia la ruta -->
           <video controls preload="none">
-            <source src="media/video-principal.mp4" type="video/mp4"/>
+            <source src="media/Video Project 1.mp4" type="video/mp4"/>
             Tu navegador no soporta video.
           </video>
         </div>
@@ -489,7 +516,7 @@
 <!-- Testimonios -->
 <section class="section" id="voces">
   <div class="card">
-    <h2>Voces (testimonios)</h2>
+    <h2>Voces</h2>
     <p>
       Testimonios
     </p>
@@ -529,6 +556,58 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
+<!-- Social Floating Menu -->
+<div class="social-fab" aria-label="Redes sociales">
+  <button id="socialToggle" class="social-fab__btn" aria-expanded="false" aria-controls="socialMenu" title="Redes">
+    <!-- Icono del botón (hamburguesa/puntos) -->
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M12 7a2 2 0 1 0 .001-4.001A2 2 0 0 0 12 7Zm0 7a2 2 0 1 0 .001-4.001A2 2 0 0 0 12 14Zm0 7a2 2 0 1 0 .001-4.001A2 2 0 0 0 12 21Z"/>
+    </svg>
+  </button>
+
+  <div id="socialMenu" class="social-fab__menu" role="menu">
+    <a class="social-fab__item" role="menuitem" href="https://www.facebook.com/profile.php?id=61586320075594" target="_blank" rel="noopener" title="Facebook">
+      <!-- Facebook icon -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.87v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.25c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 2.88h-2.3v6.99A10 10 0 0 0 22 12Z"/>
+      </svg>
+    </a>
+
+    <!--  <a class="social-fab__item" role="menuitem" href="https://www.tiktok.com/@TU_USUARIO" target="_blank" rel="noopener" title="TikTok">
+      TikTok icon (simple) 
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M16 3c.4 2.6 2.1 4.7 4.6 5V11c-1.8 0-3.4-.6-4.6-1.6V16c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .7 0 1.1.1v3.3c-.3-.1-.7-.2-1.1-.2-1.6 0-2.9 1.3-2.9 2.9S8.4 19 10 19s2.9-1.3 2.9-2.9V3h3.1Z"/>
+      </svg>
+    </a>-->
+
+    <a class="social-fab__item" role="menuitem" href="https://open.spotify.com/episode/49Viw38CrYGu6tFUuibi2K?si=Ox5GO13oQ3qBS_vqaOBkgw" target="_blank" rel="noopener" title="Spotify">
+      <!-- Spotify icon -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm4.58 14.52a.75.75 0 0 1-1.03.25c-2.83-1.73-6.4-2.12-10.62-1.16a.75.75 0 1 1-.33-1.46c4.6-1.05 8.53-.6 11.73 1.35.35.22.46.68.25 1.02Zm1.19-2.64a.9.9 0 0 1-1.24.3c-3.24-1.99-8.18-2.56-12.02-1.4a.9.9 0 1 1-.52-1.73c4.33-1.31 9.71-.67 13.38 1.59.43.27.57.83.3 1.24Zm.1-2.75C14.2 8.86 8.1 8.72 4.6 9.78a1 1 0 1 1-.58-1.91c4.04-1.22 10.77-1.03 15.03 1.5a1 1 0 0 1-1.08 1.76Z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<script>
+  const fab = document.querySelector(".social-fab");
+  const toggle = document.getElementById("socialToggle");
+
+  toggle.addEventListener("click", () => {
+    const isOpen = fab.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Cerrar al hacer click fuera
+  document.addEventListener("click", (e) => {
+    if (!fab.contains(e.target)) {
+      fab.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>
+
 
 </body>
 </html>
